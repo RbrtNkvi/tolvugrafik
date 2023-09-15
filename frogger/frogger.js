@@ -105,6 +105,7 @@ window.onload = function init()
 
 
 function render() {
+  setTimeout( function() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.uniform2fv( carLoc, vec2(-10,0))
     for(let i = 1; i < 6; i++) {
@@ -165,4 +166,5 @@ function render() {
         document.getElementById("status").innerHTML = "Þú tapaðir";
       }
     }
+  }, 15 );
 }

@@ -7,6 +7,7 @@ var speed;
 var car;
 var carColor = [];
 var crash = false;
+var lastFrame = false;
 
 window.onload = function init()
 {
@@ -150,11 +151,18 @@ function render() {
       }
     }
 
-    if(stig < 10 && !crash) {
-      window.requestAnimationFrame(render);
-    } else if(stig >= 10){
-      document.getElementById("status").innerHTML = "Þú vannst";
+    if(!lastFrame){
+      if(stig < 10 && !crash) {
+        window.requestAnimationFrame(render);
+      } else {
+        lastFrame = true;
+        window.requestAnimationFrame(render);
+      }
     } else {
-      document.getElementById("status").innerHTML = "Þú tapaðir";
+      if(stig >= 10){
+        document.getElementById("status").innerHTML = "Þú vannst";
+      } else {
+        document.getElementById("status").innerHTML = "Þú tapaðir";
+      }
     }
 }

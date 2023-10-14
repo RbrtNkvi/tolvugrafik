@@ -312,11 +312,3 @@ function cohesion(fish){
   loc = scale(1/9, loc);
   return loc;
 }
-
-function safeNormalize(vec) {
-  let magnitude = length(vec);
-  if (magnitude === 0) {
-      return vec3(0, 0, 0); // Return zero vector or any other suitable value
-  }
-  return scale(1/magnitude, vec);
-}

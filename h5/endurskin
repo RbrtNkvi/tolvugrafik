@@ -1,0 +1,27 @@
+3)
+  a)
+    i)
+      Til að fá mesta depilendurskin þarf að hámarka I = K_sL_s cos^a(phi) þar sem phi = r dot v. þ.e. viljum phi = 0 og því er r = v
+      eða 2*(l dot n) dot n - l = v
+    ii)
+      Til að hámarka dreifniendurskin viljum við hámarka K_d(l dot n)I_d sem gerist þegar l = n svo við viljum
+      halla hlutnum í átt að ljósinu.
+  b)
+    i) 
+      Fjarlægð áhorfanda skiptir ekki máli bara stefna (þ.e. hvaðan hann er að horfa). Þar sem engar af formúlunum tekur fjarlægð
+      með í reikninginn.
+    ii) 
+      Fjarlægð ljósgjafa skiptir máli ef notuð er dofnun og þá verður ljósið dimmra því lengra sem það er frá hlutnum.
+
+4)
+  a)
+    Bjartasta dreifniendurskin er einhverstaðar á milli beint undir l_1 og beint undir l_2 þar sem hornin hámarka gildið
+  b)
+    Beint undir l_1 þá fáum við fullt endurskin frá l_1.
+  c)
+    Beint undir l_2 þá fáum við fullt endurskin frá l_2.
+  d)
+    a) breytist þar sem l_2 er lengra í burtu þá er bjartasta dreifniendurskin nær beint undir l_1.
+  e)
+    ef að það er hægt þá er það mjög nálægt/á línunni og nálægt miðjunni því að ef við erum fyrir ofan línuna þá fara punktarnir ekki
+    nógu nálægt hvor öðrum.

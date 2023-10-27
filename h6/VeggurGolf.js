@@ -79,12 +79,12 @@ var vertices = [
     vec4( -5.0,  0.0,  0.0, 1.0 ),
     vec4( -5.0,  0.0, 10.0, 1.0 ),
 
-    vec4( -100.0,  10.0, 100.0, 1.0 ),
-    vec4(  100.0,  10.0, 100.0, 1.0 ),
-    vec4(  100.0,  10.0, -100.0, 1.0 ),
-    vec4(  100.0,  10.0, -100.0, 1.0 ),
-    vec4( -100.0,  10.0, -100.0, 1.0 ),
-    vec4( -100.0,  10.0, 100.0, 1.0 )
+    vec4( -1000.0,  10.0, 1000.0, 1.0 ),
+    vec4(  1000.0,  10.0, 1000.0, 1.0 ),
+    vec4(  1000.0,  10.0, -1000.0, 1.0 ),
+    vec4(  1000.0,  10.0, -1000.0, 1.0 ),
+    vec4( -1000.0,  10.0, -1000.0, 1.0 ),
+    vec4( -1000.0,  10.0, 1000.0, 1.0 )
 ];
 
 // Mynsturhnit fyrir vegg
@@ -232,8 +232,16 @@ window.onload = function init() {
     
     // Event listener for keyboard
      window.addEventListener("keydown", function(e){
+        deltaMoveX = userIncr * userXDir;
+        deltaMoveZ = userIncr * userZDir;
+        if ((deltaMoveX < -4.9 && deltaMoveX > -5.1) || 
+            (deltaMoveX < 5.1 && deltaMoveX > 4.9)   || 
+            (deltaMoveZ < 0.1 && deltaMoveZ > -0.1)  || 
+            (deltaMoveZ < 10.1 && deltaMoveZ > 9.9)) {
+
+        } else {
          switch( e.keyCode ) {
-            case 87:	// w
+            case 87:	// w                
                 userXPos += userIncr * userXDir;
                 userZPos += userIncr * userZDir;;
                 break;
@@ -250,6 +258,7 @@ window.onload = function init() {
                 userZPos += userIncr * userXDir;;
                 break;
          }
+        }
      }  );  
 
     // Event listener for mousewheel

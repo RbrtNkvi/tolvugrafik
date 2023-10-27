@@ -246,14 +246,6 @@ window.onload = function init() {
     
     // Event listener for keyboard
      window.addEventListener("keydown", function(e){
-        deltaMoveX = userIncr * userXDir;
-        deltaMoveZ = userIncr * userZDir;
-        if ((userXPos < -4.9 && userXPos > -5.1) || 
-            (deltaMoveX < 5.1 && deltaMoveX > 4.9)   || 
-            (deltaMoveZ < 0.1 && deltaMoveZ > -0.1)  || 
-            (deltaMoveZ < 10.1 && deltaMoveZ > 9.9)) {
-
-        } else {
          switch( e.keyCode ) {
             case 87:	// w
               deltaMoveX = userIncr * userXDir + userXPos;
@@ -288,7 +280,6 @@ window.onload = function init() {
               }
               break;
          }
-        }
      }  );  
 
     // Event listener for mousewheel

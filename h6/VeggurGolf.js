@@ -332,7 +332,11 @@ function collision(x, z){
       (x < 5.1 && x > 4.9)   || 
       (z < 0.1 && z > -0.1)  || 
       (z < 10.1 && z > 9.9)) {
-        return 0;
+
+      if ((z < 0.1 && z > -0.1) && (x < 1.0 && x > -1.0)) {
+        return 1;
+      }
+      return 0;
   } else {
     return 1;
   }

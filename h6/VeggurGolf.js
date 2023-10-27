@@ -45,11 +45,18 @@ var mvLoc;
 // Hnútar veggsins
 var vertices = [
     vec4( -5.0,  0.0, 0.0, 1.0 ),
+    vec4( -1.0,  0.0, 0.0, 1.0 ),
+    vec4( -1.0,  1.0, 0.0, 1.0 ),
+    vec4( -1.0,  1.0, 0.0, 1.0 ),
+    vec4( -5.0,  1.0, 0.0, 1.0 ),
+    vec4( -5.0,  0.0, 0.0, 1.0 ),
+
+    vec4(  1.0,  0.0, 0.0, 1.0 ),
     vec4(  5.0,  0.0, 0.0, 1.0 ),
     vec4(  5.0,  1.0, 0.0, 1.0 ),
     vec4(  5.0,  1.0, 0.0, 1.0 ),
-    vec4( -5.0,  1.0, 0.0, 1.0 ),
-    vec4( -5.0,  0.0, 0.0, 1.0 ),
+    vec4(  1.0,  1.0, 0.0, 1.0 ),
+    vec4(  1.0,  0.0, 0.0, 1.0 ),
 
     vec4( -5.0,  0.0, 10.0, 1.0 ),
     vec4( -5.0,  0.0, 0.0, 1.0 ),
@@ -89,6 +96,13 @@ var vertices = [
 
 // Mynsturhnit fyrir vegg
 var texCoords = [
+    vec2(  0.0, 0.0 ),
+    vec2( 10.0, 0.0 ),
+    vec2( 10.0, 1.0 ),
+    vec2( 10.0, 1.0 ),
+    vec2(  0.0, 1.0 ),
+    vec2(  0.0, 0.0 ),
+
     vec2(  0.0, 0.0 ),
     vec2( 10.0, 0.0 ),
     vec2( 10.0, 1.0 ),
@@ -234,29 +248,45 @@ window.onload = function init() {
      window.addEventListener("keydown", function(e){
         deltaMoveX = userIncr * userXDir;
         deltaMoveZ = userIncr * userZDir;
-        if ((deltaMoveX < -4.9 && deltaMoveX > -5.1) || 
+        if ((userXPos < -4.9 && userXPos > -5.1) || 
             (deltaMoveX < 5.1 && deltaMoveX > 4.9)   || 
             (deltaMoveZ < 0.1 && deltaMoveZ > -0.1)  || 
             (deltaMoveZ < 10.1 && deltaMoveZ > 9.9)) {
 
         } else {
          switch( e.keyCode ) {
-            case 87:	// w                
-                userXPos += userIncr * userXDir;
-                userZPos += userIncr * userZDir;;
-                break;
+            case 87:	// w
+              deltaMoveX = userIncr * userXDir + userXPos;
+              deltaMoveZ = userIncr * userZDir + userZPos;
+              if (collision(deltaMoveX, deltaMoveZ) == 1){
+                  userXPos += userIncr * userXDir;
+                  userZPos += userIncr * userZDir;
+              }
+              break;
             case 83:	// s
+              deltaMoveX = userIncr * userXDir - userXPos;
+              deltaMoveZ = userIncr * userZDir - userZPos;
+              if (collision(deltaMoveX, deltaMoveZ) == 1){
                 userXPos -= userIncr * userXDir;
-                userZPos -= userIncr * userZDir;;
-                break;
+                userZPos -= userIncr * userZDir;
+              }
+              break;
             case 65:	// a
+              deltaMoveX = userIncr * userXDir + userXPos;
+              deltaMoveZ = userIncr * userZDir - userZPos;
+              if (collision(deltaMoveX, deltaMoveZ) == 1){
                 userXPos += userIncr * userZDir;
-                userZPos -= userIncr * userXDir;;
-                break;
+                userZPos -= userIncr * userXDir;
+              }
+              break;
             case 68:	// d
+              deltaMoveX = userIncr * userXDir - userXPos;
+              deltaMoveZ = userIncr * userZDir + userZPos;
+              if (collision(deltaMoveX, deltaMoveZ) == 1){
                 userXPos -= userIncr * userZDir;
-                userZPos += userIncr * userXDir;;
-                break;
+                userZPos += userIncr * userXDir;
+              }
+              break;
          }
         }
      }  );  
@@ -285,23 +315,25 @@ var render = function(){
 
     // Teikna vegg með mynstri
     gl.bindTexture( gl.TEXTURE_2D, texVegg );
-    gl.drawArrays( gl.TRIANGLES, 0, numVertices );
-
-    gl.bindTexture( gl.TEXTURE_2D, texVegg );
-    gl.drawArrays( gl.TRIANGLES, numVertices, numVertices );
-
-    gl.bindTexture( gl.TEXTURE_2D, texVegg );
-    gl.drawArrays( gl.TRIANGLES, 2*numVertices, numVertices );
-
-    gl.bindTexture( gl.TEXTURE_2D, texVegg );
-    gl.drawArrays( gl.TRIANGLES, 3*numVertices, numVertices );
+    gl.drawArrays( gl.TRIANGLES, 0, 5*numVertices );
 
     // Teikna gólf með mynstri
     gl.bindTexture( gl.TEXTURE_2D, texGolf );
-    gl.drawArrays( gl.TRIANGLES, 4*numVertices, numVertices );
-
-    gl.bindTexture( gl.TEXTURE_2D, texSky );
     gl.drawArrays( gl.TRIANGLES, 5*numVertices, numVertices );
 
+    gl.bindTexture( gl.TEXTURE_2D, texSky );
+    gl.drawArrays( gl.TRIANGLES, 6*numVertices, numVertices );
+
     requestAnimFrame(render);
+}
+
+function collision(x, z){
+  if ((x < -4.9 && x > -5.1) || 
+      (x < 5.1 && x > 4.9)   || 
+      (z < 0.1 && z > -0.1)  || 
+      (z < 10.1 && z > 9.9)) {
+        return 0;
+  } else {
+    return 1;
+  }
 }

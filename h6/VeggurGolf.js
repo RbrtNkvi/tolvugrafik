@@ -76,7 +76,7 @@ var vertices = [
     vec4(  5.0,  0.0,  0.0, 1.0 ),
     vec4(  5.0,  0.0,  0.0, 1.0 ),
     vec4( -5.0,  0.0,  0.0, 1.0 ),
-    vec4( -5.0,  0.0, 10.0, 1.0 ),
+    vec4( -5.0,  0.0, 10.0, 1.0 )
 ];
 
 // Mynsturhnit fyrir vegg
@@ -229,7 +229,16 @@ var render = function(){
 
     // Teikna vegg með mynstri
     gl.bindTexture( gl.TEXTURE_2D, texVegg );
-    gl.drawArrays( gl.TRIANGLES, 0, 4*numVertices );
+    gl.drawArrays( gl.TRIANGLES, 0, numVertices );
+
+    gl.bindTexture( gl.TEXTURE_2D, texVegg );
+    gl.drawArrays( gl.TRIANGLES, numVertices, numVertices );
+
+    gl.bindTexture( gl.TEXTURE_2D, texVegg );
+    gl.drawArrays( gl.TRIANGLES, 2*numVertices, numVertices );
+
+    gl.bindTexture( gl.TEXTURE_2D, texVegg );
+    gl.drawArrays( gl.TRIANGLES, 3*numVertices, numVertices );
 
     // Teikna gólf með mynstri
     gl.bindTexture( gl.TEXTURE_2D, texGolf );

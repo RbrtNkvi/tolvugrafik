@@ -51,11 +51,25 @@ var vertices = [
     vec4( -5.0,  0.0, 0.0, 1.0 ),
 
     vec4( -5.0,  0.0, -5.0, 1.0 ),
-    vec4( -5.0,  0.0, 5.0, 1.0 ),
-    vec4( -5.0,  1.0, 5.0, 1.0 ),
-    vec4( -5.0,  1.0, 5.0, 1.0 ),
+    vec4( -5.0,  0.0, 0.0, 1.0 ),
+    vec4( -5.0,  1.0, 0.0, 1.0 ),
+    vec4( -5.0,  1.0, 0.0, 1.0 ),
     vec4( -5.0,  1.0, -5.0, 1.0 ),
     vec4( -5.0,  0.0, -5.0, 1.0 ),
+
+    vec4( -5.0,  0.0, -5.0, 1.0 ),
+    vec4(  5.0,  0.0, -5.0, 1.0 ),
+    vec4(  5.0,  1.0, -5.0, 1.0 ),
+    vec4(  5.0,  1.0, -5.0, 1.0 ),
+    vec4( -5.0,  1.0, -5.0, 1.0 ),
+    vec4( -5.0,  0.0, -5.0, 1.0 ),
+
+    vec4(  5.0,  0.0, -5.0, 1.0 ),
+    vec4(  5.0,  0.0, 0.0, 1.0 ),
+    vec4(  5.0,  1.0, 0.0, 1.0 ),
+    vec4(  5.0,  1.0, 0.0, 1.0 ),
+    vec4(  5.0,  1.0, -5.0, 1.0 ),
+    vec4(  5.0,  0.0, -5.0, 1.0 ),
 // Hnútar gólfsins (strax á eftir)
     vec4( -5.0,  0.0, 10.0, 1.0 ),
     vec4(  5.0,  0.0, 10.0, 1.0 ),
@@ -215,11 +229,11 @@ var render = function(){
 
     // Teikna vegg með mynstri
     gl.bindTexture( gl.TEXTURE_2D, texVegg );
-    gl.drawArrays( gl.TRIANGLES, 0, 2*numVertices );
+    gl.drawArrays( gl.TRIANGLES, 0, 4*numVertices );
 
     // Teikna gólf með mynstri
     gl.bindTexture( gl.TEXTURE_2D, texGolf );
-    gl.drawArrays( gl.TRIANGLES, 2*numVertices, numVertices );
+    gl.drawArrays( gl.TRIANGLES, 4*numVertices, numVertices );
 
     requestAnimFrame(render);
 }

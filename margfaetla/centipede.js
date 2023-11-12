@@ -210,6 +210,7 @@
   }
 
   const animate = function () {
+    setTimeout( function() {
     requestAnimationFrame( animate );
 
     scoreTag.innerHTML = "Stig: " + score;
@@ -258,7 +259,8 @@
     if(lose == 0){
       renderer.render( scene, camera );
     }
-  };
+  }, 5 );
+  }
 
   animate();
 

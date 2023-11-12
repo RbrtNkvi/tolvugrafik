@@ -259,7 +259,7 @@
     if(lose == 0){
       renderer.render( scene, camera );
     }
-  }, 5 );
+  }, 15 );
   }
 
   animate();

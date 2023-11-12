@@ -137,7 +137,6 @@
   let shots = [];
   let shotsAvailable = [];
   function shoot() {
-    console.log("bang");
     let index = shots.length;
     for( let i = 0; i < shots.length; i++ ){
       if(shotsAvailable[i] == 0){
@@ -232,16 +231,12 @@
             gnome.position.x -= 0.3;
           }
           break;
-        case 38: //up
-          break;
         case 39: //right
           if(gnome.position.x < 7.1){
             controls.target.x += 0.3;
             camera.position.x += 0.3;
             gnome.position.x += 0.3;
           }
-          break;
-        case 40: //down
           break;
         case 32: //space
           if(shotCooldown > 10){
